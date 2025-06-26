@@ -1,0 +1,44 @@
+## Steps to do that. 
+1. We should first install all packages.
+2. We should then upload them. 
+3. Start with dc_compute and Vis_Sat2.R
+4. Run all function and all parameters.
+5. Get the dc valus, there are two ways. See final_run_examples file 
+6. We should take care when we uploading the sensors to lon/lat vales and put them in the correct order. (I solve this issue, since the ground one comes in (id,lat,lon) but space one comes in (id,lon,alt)
+7. Get the fitness function .
+
+
+
+## Getting Satalites Positions
+1. Get Anakoda and run the Jubpter from there and then the code in python gets us the locations
+2. after the the file is getting saved as .tex, right click on the file name and rename it as .csv
+3. Import the data in R 
+
+
+distm(lon, lat)
+here s[lat,lon] ex. 47 is lat and 5 is lon
+
+sens = 1: 21 #Ground sensors for small area only
+
+> fitnessNsen(sens, dc_gr_s,21)
+[1] 0.0216427
+> View(dc_gr_s)
+> sens = 1: 80 #Space Sensors
+> fitnessNsen(sens, dc_space,80)
+[1] 0.0001647694
+
+## Ploting scripts 
+1. plot_K_Heat_coverage (The one that I generted of three distict coumns)
+2. gen_plots. (Normal K-coverage and GDOP values)
+3. plot_Vis_Horizon_Loc (Sensor Locations, Horizon Distnace, Visablity sensors)
+4. Sat_over_time_ (Satalites coverage over time)
+
+
+Notes for later:
+- the g_info=75 should be changed box it is confusing when there is <4 sensors and no coverage in the plots, so we should know how many points really coverd by 4 plus sensors
+
+
+## If we need to check where to place n sensors on ground in addition to the alreday existing ones from space, we should do:
+1. generate as an example 400 sensors and get then append that to the satalites ones.
+2. get the dc values 
+3. run the GA, but inside the fitness function add the satlites sensors to the population that has been selected in sens
